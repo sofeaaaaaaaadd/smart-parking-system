@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" <title>EZ KL Smart Parking</title>
+  <href="https: //unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Home Page -->
+    <div id="home" class="page">
+      <h1>EZ KL</h1>
+      <input id="userInput" type="text" placeholder="Phone Number, Username, or Email" required>
+      <input id="password" type="password" placeholder="Password" required>
+      <button onclick="login()">Log In</button>
+      <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+      <p>Don't have an account? <a href="#" onclick="showPage('register')">Sign Up</a></p>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="register" class="page hidden">
+      <h1>EZ KL User Registration</h1>
+      <input id="regEmail" type="text" placeholder="Email or Phone Number" required>
+      <input id="regFullName" type="text" placeholder="Full Name" required>
+      <input id="regUsername" type="text" placeholder="Username" required>
+      <input id="regPassword" type="password" placeholder="Password" required>
+      <input id="regCarPlate" type="text" placeholder="Car Plate" required>
+      <button onclick="register()">Sign Up</button>
+      <p>Have an account? <a href="#" onclick="showPage('home')">Log In</a></p>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page hidden">
+      <h1>EZ KL</h1>
+      <button onclick="showPage('newBooking')">New Booking</button>
+      <button onclick="viewBooking()">View Booking</button>
+      <button onclick="cancelBooking()">Cancel Booking</button>
+    </div>
+
+    <!-- New Booking Page -->
+    <div id="newBooking" class="page hidden">
+      <h1>Give details parking time</h1>
+      <input id="parkingTime" type="time" placeholder="Enter Parking Time" required>
+      <p>Choose a parking spot</p>
+      <div class="parking-spots">
+        <div class="spot available" onclick="selectSpot(1)">1</div>
+        <div class="spot unavailable">2</div>
+        <div class="spot available" onclick="selectSpot(3)">3</div>
+        <div class="spot available" onclick="selectSpot(4)">4</div>
+        <div class="spot unavailable">5</div>
+        <div class="spot available" onclick="selectSpot(6)">6</div>
+        <div class="spot available" onclick="selectSpot(7)">7</div>
+        <div class="spot unavailable">8</div>
+        <div class="spot available" onclick="selectSpot(9)">9</div>
+        <div class="spot available" onclick="selectSpot(10)">10</div>
+      </div>
+      <p id="timeAlert" style="color: red;"></p>
+      <button onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+
+    <!-- Details Page -->
+    <div id="details" class="page hidden">
+      <h1>Your Parking Details</h1>
+      <p>Parking Spot: <span id="selectedSpot">--</span></p>
+      <p>Please come within the time given, or your booking will be cancelled.</p>
+      <p>Your location: <span id="location">A7</span></p>
+      <p>Map:</p>
+      <div id="map" style="height: 300px; width: 100%;"></div>
+    </div>
+  </div>
+
+  <!-- Details Page -->
+  <div id="details" class="page hidden">
+    <h1>Your Parking Details</h1>
+    <p>Parking Spot: <span id="selectedSpot">--</span></p>
+    <p>Please come within the time given, or your booking will be cancelled.</p>
+    <p>Your location: <span id="location">--</span></p>
+    <div id="map" style="height: 300px; width: 100%;"></div>
+  </div>
+  </div>
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+
+</html>
